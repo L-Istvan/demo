@@ -3,8 +3,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/src/main/resources/static/js/selectionChange.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Főoldal</title>
@@ -18,17 +20,14 @@
             <center>
                 <label for="getSemester" id="labelGetSemester">Félév:</label>
                 <select name="semester" id="semester" >
-                    <option value="">Félév</option>
+                    <option value="" disabled selected>Félév</option>
                     <option value="1">Őszi félév</option>
                     <option value="2">Tavaszi félév</option>
                 </select>
                 <br>
                 <label for="setSubject" id="labelSetSubject">Tantárgyak:</label>
                 <select name="subjects" id="subjects" >
-                    <option value="">Tantárgyak</option>
-                    <option value="Rendszerfejlesztés Technológiája">Rendszerfejlesztés Technológiája</option>
-                    <option value="Lineáris Algebra">Lineáris Algebra</option>
-                    <option value="Számítógépi Grafika">Számítógépi Grafika</option>
+                    <option value="" disabled selected>Tantárgyak</option>
                 </select>
             </center>
             <center>

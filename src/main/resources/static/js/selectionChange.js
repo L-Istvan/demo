@@ -1,0 +1,10 @@
+$(document).ready(function () {
+    $("#semester").change(function () {
+        var val = $(this).val();
+        if (val == "1") {
+            $("#subjects").html("<option value='' disabled selected>Tantárgyak</option><option value='' disabled>---Programtervező Informatikus---</option><option value='DigitAlk'>Digitális Alkalmazások</option><option value='LinAlg'>Lineáris Algebra</option><option value='Prog1'>Programozási nyelvek 1</option><option value='' disabled>---Csecsemő- és kisgyermeknevelő ---</option><option value='BevPed'>Bevezetés a pedagógiába</option><option value='GyerVed'>Család- és gyermekvédelem</option><option value='Anat'>Anatómia és egészségtan</option><option value='' disabled>---Sportszervező ---</option><option value='AnatSport'>Anatómia</option><option value='DigitAlk'>Digitális Alkalmazások</option><option value='KozGazSport1'>Közgazdaságtan 1</option><option value='' disabled>---Tanító ---</option><option value='DigitAlk'>Digitális Alkalmazások</option><option value='Magyar1'>Magyar nyelv 1</option><option value='Matek1'>Matematika 1</option>");
+        } else if (val == "2") {
+            $("#subjects").html("<option value='' disabled selected>Tantárgyak</option><option value='' disabled>---Programtervező Informatikus---</option><option value='DiszkMat'>Diszkrét Matematika</option><option value='Alg'>Adatszerkezetes és algoritmusok</option><option value='Prog2'>Programozási nyelvek 2</option><option value='' disabled>---Csecsemő- és kisgyermeknevelő ---</option><option value='DigitAlk'>Digitális Alkalmazások</option><option value='Fejlodes'>Fejlődéslélektan</option><option value='Szemelyiseg'>A személyiség alakulása</option><option value='' disabled>---Sportszervező ---</option><option value='KozGazSport2'>Közgazdaságtan 2</option><option value='GazdJogSport'>Gazdasági jogi alapismeretek</option><option value='VallalSport'>Vállalkozási ismeretek</option><option value='' disabled>---Tanító ---</option><option value='EnekZene1'>Ének-zene szakmódszertan 1</option><option value='Magyar2'>Magyar nyelv 2</option><option value='Matek2'>Matematika 2</option>");
+        }
+    });
+});
