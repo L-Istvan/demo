@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.slf4j.LoggerFactory;
@@ -49,22 +48,13 @@ public class Control {
         return "register";
     }
 
-    //@PostMapping("/reg")
     @RequestMapping(value={"/reg"}, method = RequestMethod.POST)
     public String greetingSubmit(@ModelAttribute User user) {
-        logger.info("hello");
-        logger.debug(user.getFirstname());
-        logger.debug(user.getLastname());
-        logger.debug(user.getUsername());
-        logger.debug(user.getPassword());
-        logger.debug(user.getConfirmpassword());
-        logger.debug(user.getFaculty());
         /***********************Valamiért nem tudtam elérni interfacen keresztül az userRepot  **************/
         User usercheck = userRepo.findByUsername(user.getUsername());
         if (usercheck != null) return "register";
         else {
             if (user.getFaculty() != "") {
-                logger.info("Adatbázisba mentem.");
                 User u = userRepo.save(user);
             }
             else{
@@ -81,7 +71,6 @@ public class Control {
 
         System.out.println("ID : " + semester.getId());
         Semester s = semesterRepo.save(semester);
-        //Semester c = semesterRepo.saveAndFlush(semester);
 
         logger.info(semester.getSemester());
         logger.info(semester.getSubjects());
@@ -91,16 +80,6 @@ public class Control {
     }
 
 
-/*
-    @Transactional
-    public void insertWithQuery(Semester semester) {
-        entityManager.createNativeQuery("INSERT INTO person (id, first_name, last_name) VALUES (?,?,?)")
-                .setParameter(1, semester.getId())
-                .setParameter(2, semester.getSemester())
-                .setParameter(3, semester.getSubjects())
-                .executeUpdate();
-    }
-*/
 }
 
 
