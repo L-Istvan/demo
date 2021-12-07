@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tárgyfelvétel Regisztráció</title>
+</head>
+<body>
+        <form name="register" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin">
+          <div class="container">
+              <center><h1>Regisztráció</h1></center>
+              <center><img src="/img/avatar.png" width="150px"></center>
+              <center>
+                <label for="getFirstName" id="labelGetFirstName">Vezetéknév:</label>
+                <input type="text" placeholder="Vezetéknév" th:field="*{firstname}" name="firstname" required>
+                <br>
+                <label for="getLastName" id="labelGetLastName">Keresztnév:</label>
+                <input type="text" placeholder="Keresztnév" th:field="*{lastname}" name="lastname" required>
+                <br>
+                <label for="getUsername" id="labelUsername">Felhasználónév:</label>
+                <input type="text" placeholder="Felhasználónév" th:field="*{username}" name="username" required>
+                <br>
+                <label for="getPassword"  id="labelPassword">Jelszó:</label>
+                <input type="password" placeholder="Jelszó" th:field="*{password}" name="password" required>
+                <br>
+                <label for="confirmPassword" id="labelPasswordConfirm">Jelszó ismét:</label>
+                <input type="password" placeholder="Jelszó ismét" th:field="*{confirmpassword}" name="confirmpassword" required>
+                <br>
+                <label for="faculty" id="labelFaculty">Képzési szak:</label>
+                <select name="faculty" id="faculty" th:field="*{faculty}" >
+                    <option value="">Képzési szak</option>
+                    <option value="1">Programtervező Informatikus</option>
+                    <option value="2">Csecsemő és Kisgyermeknevelő</option>
+                    <option value="3">Sport és Rekreációszervező</option>
+                    <option value="4">Tanító</option>
+                </select>
+              </center>
+              <center>
+                  <button type="submit" class="buttonRegister">Regisztráció</button>
+              </center>
+            <div class="backToLoginContainer" id="loginContainer">
+                <div class="backToLogin"> Van fiókod? <a href="index.html" target="_self">Jelentkezz be!</a></div>
+            </div>
+          </div>
+      </form>
+</body>
+
+</html>

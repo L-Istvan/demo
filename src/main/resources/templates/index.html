@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns: sec = "http://www.thymeleaf.org/extras/spring-security" >
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tantárgyfelvétel</title>
+</head>
+<body>
+    <!--Login Page-->
+    <form name="index" th:action="@{/index}" method="post" class="form-signin">
+        <div class="container">
+            <center><h1>Bejelentkezés</h1></center>
+            <center><img src="/img/avatar.png" width="150px"></center>
+            <div th:if="${param.error}" class="alert alert-danger"> Hibás felhasználó név vagy jelszó </div>
+            <center>
+                <label id="labelUsername">Felhasználónév:</label>
+                <input type="text" placeholder="Felhasználónév" name="username" required="true">
+                <br>
+                <label id="labelPassword">Jelszó:</label>
+                <input type="password" placeholder="Jelszó" name="password" required="true">
+            </center>
+            <center>
+                <button class="buttonLogin" type="submit">Bejelentkezés</button>
+            </center>
+
+            <div class="helpTextcontainer">
+                <div class="forgotPass"> Elfelejtett <a href="http://google.com" target="_blank">jelszó?</a></div>
+                <div class="register">Nincs fiókod? <a href="/regist" target="_self">Regisztrálj!</a></div>
+            </div>
+           
+            
+        </div>
+    </form>
+    
+</body>
+</html>

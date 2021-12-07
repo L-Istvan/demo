@@ -1,0 +1,135 @@
+body{
+    background-color: #333333;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.container label{
+    font-weight: 500;
+}
+
+.container h1{
+    font-size: 40px;
+    font-weight: 400;
+}
+
+input{
+    width: 300px;
+    margin: 8px 0;
+    padding: 8px 20px;
+    display: inline-block;
+    border: 2px solid #666666;
+    box-sizing: border-box;
+    border-radius: 20px;
+    text-align: center;
+}
+
+#labelUsername, #labelPassword, #labelPasswordConfirm, #labelGetFirstName, #labelGetLastName, #labelFaculty, #faculty,
+#labelGetSemester, #labelSetSubject{
+    display: block;
+    text-align: center;
+}
+
+#labelPassword, #labelUsername, #labelPasswordConfirm, #labelFaculty #labelGetFirstName, #semester, #labelSetSubject,
+#subjects{
+    margin-top: 10px;
+}
+
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.buttonLogin:hover, .buttonLogin:focus, .buttonRegister:hover, .buttonRegister:focus,
+.buttonSetSubject:hover, .buttonSetSubject:focus, .buttonExit:hover, .buttonExit:focus{
+    box-shadow: inset 0 0 0 2em var(--hover);
+}
+
+.buttonLogin, .buttonRegister, .buttonSetSubject, .buttonExit{
+    margin-top: 20px;
+    --hover: #0055ff;
+}
+
+button{
+    background-color: transparent;
+    color: white;
+    border-radius: 15px;
+    width: 150px;
+    height: 35px;
+    box-shadow: none;
+    border: 1px solid #0099ff;
+    transition: 0.30s;
+}
+
+.helpTextcontainer{
+    margin-top: 50px;
+}
+
+#loginContainer{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgotPass{
+    float: left;
+}
+.register{
+    float: right;
+}
+
+a:link{
+    color: #0099ff;
+}
+
+a:visited{
+    color: #01D7FF
+}
+
+.parent{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 20% 80%;
+    grid-column-gap: 0px;
+    grid-row-gap: 30px;
+}
+
+.div1{grid-area: 1 / 1 / 2 / 4;}
+.div2{grid-area: 2 / 1 / 3 / 2;}
+.div3{grid-area: 2 / 2 / 3 / 3;}
+.div4{grid-area: 2 / 3 / 3 / 4;}
+
+#faculty{
+    width: 300px;
+    height: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.mainContainer{
+    display: grid;
+    grid-template-columns: 40% 58.5%;
+    grid-template-rows: repeat(5,1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+}
+
+.divFelvetel{grid-area: 1 / 1 / 6 / 2;}
+.divFelvett{grid-area: 1 / 2 / 6 / 3;}
+
+#semester, #subjects{
+    width:250px;
+    height: 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
