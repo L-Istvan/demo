@@ -25,13 +25,13 @@ input{
 }
 
 #labelUsername, #labelPassword, #labelPasswordConfirm, #labelGetFirstName, #labelGetLastName, #labelFaculty, #faculty,
-#labelGetSemester, #labelSetSubject{
+#labelGetSemester, #labelSetSubject, #labelGetTantargyName, #labelTantargyTime{
     display: block;
     text-align: center;
 }
 
 #labelPassword, #labelUsername, #labelPasswordConfirm, #labelFaculty #labelGetFirstName, #semester, #labelSetSubject,
-#subjects{
+#subjects, #labelGetTantargyName, #labelTantargyTime{
     margin-top: 10px;
 }
 
@@ -44,11 +44,11 @@ input{
 }
 
 .buttonLogin:hover, .buttonLogin:focus, .buttonRegister:hover, .buttonRegister:focus,
-.buttonSetSubject:hover, .buttonSetSubject:focus, .buttonExit:hover, .buttonExit:focus{
+.buttonSetSubject:hover, .buttonSetSubject:focus, .buttonExit:hover, .buttonExit:focus, .buttonTantargy:hover, .buttonTantargy:focus{
     box-shadow: inset 0 0 0 2em var(--hover);
 }
 
-.buttonLogin, .buttonRegister, .buttonSetSubject, .buttonExit{
+.buttonLogin, .buttonRegister, .buttonSetSubject, .buttonExit, .buttonTantargy{
     margin-top: 20px;
     --hover: #0055ff;
 }

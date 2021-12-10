@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tantárgy hozzáadása</title>
+</head>
+
+<body>
+    <form name="register-tantargy" th:action="" th:object="" method="" class="form-tantargy">
+        <div class="container">
+            <center><h1>Tantárgy hozzáadása</h1></center>
+            <center>
+                <label for="getTantargyName" id="labelGetTantargyName">Tantárgy neve:</label>
+                <input type="text" placeholder="Tantárgy neve" th:field="" name="tantargyname" required>
+                <br>
+                <label for="getTantargyTime" id="labelTantargyTime">Tantárgy időpontja</label>
+                <select name="tantargyTime" id="tantargyTime" th:field="" >
+                    <option value="">Válasszon időpontot!</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                </select>
+              </center>
+              <center>
+                  <button type="submit" class="buttonTantargy">Tantárgy hozzáadása</button>
+              </center>
+        </div>
+    </form>
+</body>
+</html>
