@@ -51,12 +51,21 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/index");
 
     }
+
+    private static final  String[] AUTH_WHITELIST = {
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v2/api-docs",
+            "/webjars/**"
+    };
+
     //css-t és képeket figyelmen kivül hagyása
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
                 .antMatchers("/**/*.{css}")
-                .antMatchers("/**/*.{js}");
+                .antMatchers("/**/*.{js}")
+                .antMatchers(AUTH_WHITELIST);
     }
 
 /*
