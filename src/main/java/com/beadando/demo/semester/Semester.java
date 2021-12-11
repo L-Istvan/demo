@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "Semesters")
 public class Semester {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long id;
 
@@ -27,6 +27,13 @@ public class Semester {
     public Semester(String semester, String subjects) {
         this.semester = semester;
         this.subjects = subjects;
+    }
+
+    public Semester(long id, String subjects, String username, String semester) {
+        this.id = id;
+        this.subjects = subjects;
+        this.username = username;
+        this.semester = semester;
     }
 
     public String getSemester() {

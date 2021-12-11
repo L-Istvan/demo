@@ -18,6 +18,8 @@
             <center><h1>Tantárgy felvétele</h1></center>
             <br>
             <center>
+                <div th:if="${stream}" class="alert alert-danger"> Már fel vetted ezt a tárgyat </div>
+                <div th:if="${stream1}" class="alert alert-danger"> Nem jelölt ki tárgyat.</div>
                 <label for="getSemester" id="labelGetSemester">Félév:</label>
                 <select name="semester" id="semester" >
                     <option value="" disabled selected>Félév</option>
@@ -31,26 +33,31 @@
                 </select>
             </center>
             <center>
-                <button type="submit" class="buttonSetSubject">Felvétel</button>
+
+                <button type="submit" class="buttonSetSubject" name="save" value="save" >Felvétel </button>
                 <br>
-                <button type="submit" class="buttonExit" onclick="window.location.href='/index'">Kilépés</button>
+
+                <button type="submit" class="buttonExit" name="exit" value="exit" th:action="@{/logout}" >Kilépés</button>
+                <br>
+                <button type="submit" class="buttonSetSubject" name="show" value="show" >Felvett tárgyak megjelenítés </button>
             </center>
         </div>
+
+
         <div class="divFelvett">
             <center><h1>Felvett tantárgyak</h1></center>
             <center>
                 <div class="listContainer">
-                    <ul>
-                        <li>Rendszerfejlesztés Technológiája</li>
-                        <li>Számítógépi Grafika</li>
-                        <li>Lineáris Algebra</li>
-                        <li>Logikai alapok programozáshoz</li>
-                    </ul>
+                    <table>
+                        <tr th:each="semester, stat : ${steam1}">
+                            <td><span th:text="${semester.subjects}">  </span></td>
+                        </tr>
+                    </table>
                 </div>
             </center>
         </div>
     </div>
+
 </body>
 </form>
-
 </html>

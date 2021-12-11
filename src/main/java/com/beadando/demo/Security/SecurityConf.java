@@ -9,8 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -34,10 +35,11 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/tantargy").permitAll()//hasRole("ADMIN")
                 .antMatchers("/regist").permitAll()
                 .antMatchers("/reg").permitAll()
                 .antMatchers("/db").permitAll()
+                .antMatchers("/tan").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -45,8 +47,8 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/index?logout")
-                .permitAll();
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/index");
 
     }
     //css-t és képeket figyelmen kivül hagyása
@@ -57,6 +59,17 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**/*.{js}");
     }
 
+/*
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth)
+            throws Exception {
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        auth.inMemoryAuthentication()
+                .withUser("spring")
+                .password(encoder.encode("secret"))
+                .roles("USER");
+    }
+*/
 
 
 }

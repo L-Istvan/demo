@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,25 +10,43 @@
 </head>
 
 <body>
-    <form name="register-tantargy" th:action="" th:object="" method="" class="form-tantargy">
+    <form name="index" th:action="@{/tan}" th:object="${tantargy}" method="post" class="form-signin">
         <div class="container">
             <center><h1>Tantárgy hozzáadása</h1></center>
+
+
             <center>
                 <label for="getTantargyName" id="labelGetTantargyName">Tantárgy neve:</label>
-                <input type="text" placeholder="Tantárgy neve" th:field="" name="tantargyname" required>
+                <input type="text" placeholder="Tantárgy neve"  name="Tantárgy neve" required>
                 <br>
-                <label for="getTantargyTime" id="labelTantargyTime">Tantárgy időpontja</label>
-                <select name="tantargyTime" id="tantargyTime" th:field="" >
+                <br>
+                <br>
+                <label for="getTantargyTime"  id="labelTantargyTime" >Tantárgy időpontja</label>
+                <select name="tantargyTime" id="tantargyTime" >
                     <option value="">Válasszon időpontot!</option>
-                    <option value="10">10:00</option>
-                    <option value="11">11:00</option>
-                    <option value="12">12:00</option>
-                    <option value="13">13:00</option>
-                    <option value="14">14:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">14:00</option>
+                    <option value="16:00">14:00</option>
+                    <option value="17:00">14:00</option>
+                    <option value="18:00">14:00</option>
                 </select>
               </center>
+            <br>
+            <label for="fd" id="semestername" >Tantárgy féléve</label>
+            <select name="semester" id="semester" >
+                <option value="">Válasszon félévet!</option>
+                <option value="1">Őszi félév</option>
+                <option value="2">Tavaszi félév </option>
+            </select>
               <center>
-                  <button type="submit" class="buttonTantargy">Tantárgy hozzáadása</button>
+                  <br>
+                  <br>
+                  <button type="submit" class="buttonTantargy" name="add" value="add">Tantárgy hozzáadása</button>
+                  <button type="submit" class="exit" name="logout" value="logout">Kiléppés</button>
               </center>
         </div>
     </form>

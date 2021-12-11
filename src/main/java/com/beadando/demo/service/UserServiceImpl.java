@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         this.userrRepo = userrRepo;
     }
 
+
     @Override
     public void registerUser(User user) {
         User u = userrRepo.save(user);
@@ -27,7 +28,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("User keresés");
         User user = findByUsername(username);
         if( user == null ){
             throw new UsernameNotFoundException(username);
@@ -39,5 +39,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public User findByUsername(String username){
         return userrRepo.findByUsername(username);
     }
+
 
 }

@@ -13,9 +13,6 @@ public class User {
     private long id;
 
     @Column(nullable = false)
-    private String firstname;
-
-    @Column(nullable = false)
     private String lastname;
 
     @Column(nullable = false)
@@ -29,6 +26,7 @@ public class User {
 
     @Column(nullable = false)
     private String faculty;
+
 
     @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinTable(
@@ -50,9 +48,8 @@ public class User {
 
     }
 
-    public User(String firstname, String lastname, String username,
+    public User(String lastname, String username,
                 String password, String confirmpassword,String faculty) {
-        this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
         this.password = password;
@@ -60,13 +57,6 @@ public class User {
         this.faculty = faculty;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
 
     public String getLastname() {
         return lastname;
@@ -115,4 +105,12 @@ public class User {
     public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
+
+    public void addRoles(String roleName){
+        if (this.roles == null || this.roles.isEmpty()){
+            this.roles = new HashSet<>();
+            this.roles.add(new Role(roleName));
+        }
+    }
+
 }

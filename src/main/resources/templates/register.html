@@ -3,20 +3,21 @@
 <html xmlns:th="http://www.thymeleaf.org" >
 
 <head>
-    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Tárgyfelvétel Regisztráció</title>
 </head>
 <body>
-        <form name="register" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin">
+        <form name="register" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin" modelAttribute="tantargy">
           <div class="container">
               <center><h1>Regisztráció</h1></center>
-              <center><img src="/src/main/resources/static/img/avatar.png" width="150px"></center>
+              <center><img src="/img/avatar.png" width="150px"></center>
               <center>
-                <label for="getFirstName" id="labelGetFirstName">Vezetéknév:</label>
-                <input type="text" placeholder="Vezetéknév" th:field="*{firstname}" name="firstname" required>
+                  <div th:if="${warningFaculty}" class="alert alert-danger"> Nem lehet üresen hagyni a szakot. </div>
+                  <div th:if="${warningPassword}" class="alert alert-danger"> Nem egyezik a jelszó. </div>
+                  <div th:if="${warningUsername}" class="alert alert-danger"> Létezik ilyen felhasználó. </div>
                 <br>
                 <label for="getLastName" id="labelGetLastName">Keresztnév:</label>
                 <input type="text" placeholder="Keresztnév" th:field="*{lastname}" name="lastname" required>
@@ -48,5 +49,4 @@
           </div>
       </form>
 </body>
-
 </html>

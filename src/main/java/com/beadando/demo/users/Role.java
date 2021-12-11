@@ -30,6 +30,10 @@ public class Role {
         return id;
     }
 
+    public Role(String role){
+        this.role=role;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

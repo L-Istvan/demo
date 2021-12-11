@@ -2,10 +2,8 @@ package com.beadando.demo.service;
 
 import com.beadando.demo.users.Role;
 import com.beadando.demo.users.User;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,6 +30,7 @@ public class UserDetail implements UserDetails {
         return authorities;
     }
 
+
     @Override
     public String getPassword() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -43,6 +42,8 @@ public class UserDetail implements UserDetails {
     public String getUsername() {
         return user.getUsername();
     }
+
+
 
     @Override
     public boolean isAccountNonExpired() {
