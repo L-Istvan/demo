@@ -10,43 +10,44 @@
 </head>
 
 <body>
-    <form name="index" th:action="@{/tan}" th:object="${tantargy}" method="post" class="form-signin">
-        <div class="container">
-            <center><h1>Tantárgy hozzáadása</h1></center>
-            <center>
-                <label for="getTantargyName"  id="labelGetTantargyName">Tantárgy neve:</label>
-                <input type="text" placeholder="Tantárgy neve" field="*{subjectName}" name="subjectName" required>
-                <br>
-                <br>
-                <br>
-                <label for="getTantargyTime"  id="labelTantargyTime" >Tantárgy időpontja</label>
-                <select name="subjectTime" id="subjectTime" field="*{subjectTime}" >
-                    <option value="">Válasszon időpontot!</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">14:00</option>
-                    <option value="16:00">14:00</option>
-                    <option value="17:00">14:00</option>
-                    <option value="18:00">14:00</option>
-                </select>
-              </center>
+<form name="index" th:action="@{/tan}" th:object="${tantargy}" method="post" class="form-signin">
+    <div class="container">
+        <div th:if="${warningSemandTime}" class="alert alert-danger"> Minden mezőt szükséges kitölteni. </div>
+        <center><h1>Tantárgy hozzáadása</h1></center>
+        <center>
+            <label for="getTantargyName"  id="labelGetTantargyName">Tantárgy neve:</label>
+            <input type="text" placeholder="Tantárgy neve" field="*{subjectName}" name="subjectName" required>
             <br>
-            <label for="fd" id="semestername" >Tantárgy féléve</label>
-            <select name="semjavascipt " id="sem" field="*{sem}" >
-                <option value="">Válasszon félévet!</option>
-                <option value="1">Őszi félév</option>
-                <option value="2">Tavaszi félév </option>
+            <br>
+            <br>
+            <label for="getTantargyTime"  id="labelTantargyTime" >Tantárgy időpontja</label>
+            <select name="subjectTime" id="subjectTime" field="*{subjectTime}" >
+                <option value="">Válasszon időpontot!</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
             </select>
-              <center>
-                  <br>
-                  <br>
-                  <button type="submit" class="buttonTantargy" name="add" value="add">Tantárgy hozzáadása</button>
-                  <button type="submit" class="exit" name="logout" value="logout">Kiléppés</button>
-              </center>
-        </div>
-    </form>
+        </center>
+        <br>
+        <label for="fd" id="semestername" >Tantárgy féléve</label>
+        <select name="sem" id="sem" field="*{sem}" >
+            <option value="">Válasszon félévet!</option>
+            <option value="1">Őszi félév</option>
+            <option value="2">Tavaszi félév </option>
+        </select>
+        <center>
+            <br>
+            <br>
+            <button type="submit" class="buttonTantargy" name="add" value="add">Tantárgy hozzáadása</button>
+            <button type="submit" class="exit" name="logout" value="logout">Kiléppés</button>
+        </center>
+    </div>
+</form>
 </body>
 </html>

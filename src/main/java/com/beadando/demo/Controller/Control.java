@@ -53,7 +53,7 @@ public class Control {
     private final String USER_ROLE = "ROLE_USER";
 
     @RequestMapping(value = "/")
-    public String valami(@CurrentSecurityContext(expression="authentication?.name") String username,Model model){
+    public String main(@CurrentSecurityContext(expression="authentication?.name") String username,Model model){
         int ID = userRepo.finduserRole(userRepo.findID(username));
         if (roleRepo.findRole(ID).equals("ROLE_ADMIN")) return "tantargy";
 
@@ -63,7 +63,7 @@ public class Control {
     }
 
     @RequestMapping(value = "/index")
-    public String m(){
+    public String index(){
         return "index";
     }
 
@@ -163,21 +163,20 @@ public class Control {
 
     }
 
-    /*
+
     @RequestMapping(value={"/tan"}, method = RequestMethod.POST,params = "logout")
     public void logout(HttpServletResponse response) throws IOException {
         response.sendRedirect("/logout");
     }
-     */
-
 
     @RequestMapping(value={"/tan"}, method = RequestMethod.POST)
     public String greetingSubmit(@ModelAttribute Tantargy tantargy, Model model) {
-        tantagyRepo.save(tantargy);
-        ArrayList<Tantargy> tan = new ArrayList<>(tantagyRepo.findTantargyak("1"));
-        for (int i=0;i<tan.size();i++){
-            System.out.println(tan.get(i).getSubjectName());
+        if (tantargy.getSem().equals("") || tantargy.getSubjectTime().equals("")){
+            model.addAttribute("warningSemandTime","Minden mező kitöltése kötelező");
+        }else{
+            tantagyRepo.save(tantargy);
         }
+        ArrayList<Tantargy> tan = new ArrayList<>(tantagyRepo.findTantargyak("1"));
         model.addAttribute("list", tantagyRepo.findTantargyak("1"));
         return "tantargy";
     }

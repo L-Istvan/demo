@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+    <script src="/js/selectionChange.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -14,22 +14,6 @@
 </head>
 <body>
 <form name="register" th:action="@{/upload}" th:object="${semester}" method="post" class="form-signin">
-
-    <script th:inline="javascript">
-        $(document).ready(function () {
-        $("#semester").change(function () {
-        var a = /*[[${name}]]*/;
-        if (val == "1") {
-        $("#subjects").html("$("#subjects").html("<option value='' disabled selected>Tantárgyak</option><option value='Digitális Alkalmazások'>Digitális Alkalmazások</option><option value='Lineáris Algebra'>Lineáris Algebra</option><option value='Programozási nyelvek 1'>Programozási nyelvek 1</option>");");
-
-        } else if (val == "2") {
-        $("#subjects").html("<option value='' disabled selected>Tantárgyak</option><option value='Diszkrét Matematika'>Diszkrét Matematika</option><option value='Adatszerkezetes és algoritmusok'>Adatszerkezetes és algoritmusok</option><option value='Programozási nyelvek 2'>Programozási nyelvek 2</option>");
-        }
-        });
-        });
-    </script>
-
-
     <div class="mainContainer">
         <div class="divFelvetel">
             <center><h1>Tantárgy felvétele</h1></center>
@@ -74,7 +58,6 @@
             </center>
         </div>
     </div>
-
 </body>
 </form>
 </html>

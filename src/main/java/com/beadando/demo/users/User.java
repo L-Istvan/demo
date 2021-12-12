@@ -1,8 +1,14 @@
 package com.beadando.demo.users;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+/**
+ * Represents a user in the database. Contains the users' id, name, shopping lists.
+ */
 
 @Entity
 @Table (name = "users")
