@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
@@ -13,16 +13,14 @@
     <form name="index" th:action="@{/tan}" th:object="${tantargy}" method="post" class="form-signin">
         <div class="container">
             <center><h1>Tantárgy hozzáadása</h1></center>
-
-
             <center>
-                <label for="getTantargyName" id="labelGetTantargyName">Tantárgy neve:</label>
-                <input type="text" placeholder="Tantárgy neve"  name="Tantárgy neve" required>
+                <label for="getTantargyName"  id="labelGetTantargyName">Tantárgy neve:</label>
+                <input type="text" placeholder="Tantárgy neve" field="*{subjectName}" name="subjectName" required>
                 <br>
                 <br>
                 <br>
                 <label for="getTantargyTime"  id="labelTantargyTime" >Tantárgy időpontja</label>
-                <select name="tantargyTime" id="tantargyTime" >
+                <select name="subjectTime" id="subjectTime" field="*{subjectTime}" >
                     <option value="">Válasszon időpontot!</option>
                     <option value="10:00">10:00</option>
                     <option value="11:00">11:00</option>
@@ -37,7 +35,7 @@
               </center>
             <br>
             <label for="fd" id="semestername" >Tantárgy féléve</label>
-            <select name="semester" id="semester" >
+            <select name="semjavascipt " id="sem" field="*{sem}" >
                 <option value="">Válasszon félévet!</option>
                 <option value="1">Őszi félév</option>
                 <option value="2">Tavaszi félév </option>

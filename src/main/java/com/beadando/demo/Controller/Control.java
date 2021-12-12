@@ -1,6 +1,7 @@
 package com.beadando.demo.Controller;
 
 import com.beadando.demo.repository.RoleRepository;
+import com.beadando.demo.repository.TantargyRepository;
 import com.beadando.demo.repository.semesterRepository;
 import com.beadando.demo.repository.userRepository;
 import com.beadando.demo.semester.Semester;
@@ -15,6 +16,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,8 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class Control {
@@ -36,6 +40,9 @@ public class Control {
     userRepository userRepo;
 
     @Autowired
+    TantargyRepository tantagyRepo;
+
+    @Autowired
     semesterRepository semesterRepo;
 
     @Autowired
@@ -46,9 +53,12 @@ public class Control {
     private final String USER_ROLE = "ROLE_USER";
 
     @RequestMapping(value = "/")
-    public String valami(@CurrentSecurityContext(expression="authentication?.name") String username){
+    public String valami(@CurrentSecurityContext(expression="authentication?.name") String username,Model model){
         int ID = userRepo.finduserRole(userRepo.findID(username));
         if (roleRepo.findRole(ID).equals("ROLE_ADMIN")) return "tantargy";
+
+        List<Tantargy> tantargy = tantagyRepo.findTantargyak("1");
+        model.addAttribute("list", "alma");
         return "main";
     }
 
@@ -64,7 +74,8 @@ public class Control {
     }
 
     @RequestMapping(value = "/tantargy")
-    public String logout(){
+    public String vbn(Model model){
+        model.addAttribute("tantargy",new Tantargy());
         return "tantargy";
     }
 
@@ -133,6 +144,7 @@ public class Control {
         else{
             model.addAttribute("stream1", "Mezők kitöltése kötelező");
         }
+
         return "main";
     }
 
@@ -160,12 +172,14 @@ public class Control {
 
 
     @RequestMapping(value={"/tan"}, method = RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute Tantargy tantargy) {
-        System.out.println(tantargy.getSubjectTime());
-        System.out.println(tantargy.getSubjectName());
-
-
-        return "index";
+    public String greetingSubmit(@ModelAttribute Tantargy tantargy, Model model) {
+        tantagyRepo.save(tantargy);
+        ArrayList<Tantargy> tan = new ArrayList<>(tantagyRepo.findTantargyak("1"));
+        for (int i=0;i<tan.size();i++){
+            System.out.println(tan.get(i).getSubjectName());
+        }
+        model.addAttribute("list", tantagyRepo.findTantargyak("1"));
+        return "tantargy";
     }
 
 

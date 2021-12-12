@@ -1,13 +1,26 @@
 package com.beadando.demo.tantargy;
 
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Tantargyak")
 public class Tantargy {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private long id;
+
+    @Column(nullable = false)
     private String subjectName;
 
+    @Column(nullable = false)
     private String subjectTime;
 
+    @Column(nullable = false)
     private String sem;
+
+
 
     public Tantargy(String subjectName, String subjectTime, String sem) {
         this.subjectName = subjectName;
@@ -25,6 +38,11 @@ public class Tantargy {
 
     public Tantargy(){
 
+    }
+
+    public String getSubjectAndTime(){
+        String x = subjectName + "    " + subjectTime;
+        return x;
     }
 
     public Tantargy(String subjectName) {
